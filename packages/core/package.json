@@ -49,6 +49,7 @@
         "flyonui-vue": "^2.1.1",
         "jsdom": "^26.1.0",
         "sass-embedded": "^1.93.2",
+        "sleepjs": "^4.0.3",
         "tailwindcss": "^4.1.16",
         "tsc-alias": "^1.8.16",
         "typescript": "^5.9.3",
