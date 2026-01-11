@@ -1,12 +1,12 @@
 {
-    "name": "vue-github-calendar",
+    "name": "github-calendar",
     "type": "module",
     "version": "0.0.0",
     "author": "Michael Cozzolino",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/michaelcozzolino/vue-github-calendar.git"
+        "url": "git+https://github.com/michaelcozzolino/github-calendar.git"
     },
     "browserslist": [
         "defaults and fully supports es6-module",
@@ -15,9 +15,9 @@
     "exports": {
         ".": {
             "types": "./dist/index.d.ts",
-            "import": "./dist/vue-github-calendar.js",
-            "require": "./dist/vue-github-calendar.umd.cjs",
-            "default": "./dist/vue-github-calendar.js"
+            "import": "./dist/github-calendar.js",
+            "require": "./dist/github-calendar.umd.cjs",
+            "default": "./dist/github-calendar.js"
         }
     },
     "files": [

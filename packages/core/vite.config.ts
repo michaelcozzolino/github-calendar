@@ -21,7 +21,7 @@ export default defineConfig({
         target:       'ESNext',
         lib:          {
             entry: resolve(__dirname, './src/index.ts'),
-            name:  'vue-github-calendar',
+            name:  'github-calendar',
         },
         rollupOptions: {
             external: ['vue', 'tailwindcss'],
