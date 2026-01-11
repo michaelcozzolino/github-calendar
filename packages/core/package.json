@@ -24,7 +24,7 @@
         "dist"
     ],
     "scripts": {
-        "dev": "yarn concurrently \"yarn build:ui -w\" \"yarn build:styles -w\" \"yarn build:types -w\" \"yarn alias:types -w\"",
+        "dev": "yarn concurrently \"yarn build:ui -w\" \"yarn build:types -w\" \"yarn alias:types -w\" \"yarn build:styles -w\"",
         "build": "yarn build:ui && yarn build:types && yarn alias:types && yarn build:styles",
         "build:ui": "vite build -c vite.config.ts",
         "build:styles": "tailwindcss -i src/index.app.css -o src/index.css",
