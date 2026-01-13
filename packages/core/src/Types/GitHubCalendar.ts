@@ -1,6 +1,6 @@
 export interface GitHubCalendarProps {
     username: string;
-    year:     number;
+    from:     Date | number; // When number it is a year
 }
 
 export type GitHubContributionLevel = 0 | 1 | 2 | 3 | 4;

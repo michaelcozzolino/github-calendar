@@ -1,7 +1,7 @@
 <template>
     <Suspense>
         <SuspensibleGitHubCalendar :username="username"
-                                   :year="year"
+                                   :from="from"
         />
 
         <template #fallback>
