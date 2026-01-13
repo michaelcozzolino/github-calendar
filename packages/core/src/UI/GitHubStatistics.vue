@@ -26,9 +26,9 @@
 <script setup lang="ts">
 import type { GithubContributionStat, GitHubDateContribution } from '@/Types/GitHubCalendar';
 import { FoStat, FoStats, FoStatTitle, FoStatValue }           from 'flyonui-vue';
-import { computed }                                            from "vue";
-import { DAYS }                                                from "@/Lib/DateConstants.ts";
-import { formatDate }                                          from "@/Lib/FormatDate.ts";
+import { computed }                                            from 'vue';
+import { DAYS }                                                from '@/Lib/DateConstants.ts';
+import { formatDate }                                          from '@/Lib/FormatDate.ts';
 
 interface Props {
     contributions: (GitHubDateContribution | null)[][];
@@ -45,7 +45,6 @@ const statRows = computed((): GithubContributionStat[][] => {
 
     const totalContributionsByDay: { [day: string]: number }   = Object.fromEntries(DAYS.map(day => [day, 0]));
     const totalContributionsByDate: { [date: string]: number } = {};
-
 
     for (const contribution of props.contributions.flat()) {
         if (contribution === null) {
@@ -94,13 +93,13 @@ const statRows = computed((): GithubContributionStat[][] => {
                 value: formatStatDate(
                     Object.entries(totalContributionsByDay).reduce(maxContributionsAccumulator, ['', 0],
                     ),
-                )
+                ),
             },
             {
                 title: 'Most contributed date',
                 value: formatStatDate(
                     Object.entries(totalContributionsByDate).reduce(maxContributionsAccumulator, ['', 0]),
-                )
+                ),
             },
         ],
     ]);
@@ -126,6 +125,6 @@ function maxContributionsAccumulator(
 }
 
 function formatStatDate(stat: [string, number]): string {
-    return `${stat[0]} (${stat[1]})`
+    return `${stat[0]} (${stat[1]})`;
 }
 </script>

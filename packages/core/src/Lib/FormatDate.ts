@@ -1,6 +1,6 @@
-import { type ComputedRef, type MaybeRefOrGetter } from "vue";
-import { useDateFormat }                           from "@vueuse/core";
+import type { ComputedRef, MaybeRefOrGetter } from 'vue';
+import { useDateFormat }                      from '@vueuse/core';
 
 export function formatDate(date: MaybeRefOrGetter<Date>): ComputedRef<string> {
-    return useDateFormat(date, 'YYYY-MM-DD')
+    return useDateFormat(date, 'YYYY-MM-DD');
 }

@@ -5,7 +5,7 @@
             <AxisLabel v-for="(day, i) in DAYS"
                        :key="day"
                        class="h-3 leading-3 "
-                       :label="(i + 1) % 2 === 0 ? day.slice(0,3) : undefined"
+                       :label="(i + 1) % 2 === 0 ? day.slice(0, 3) : undefined"
             />
         </div>
 
@@ -42,7 +42,7 @@
                             <div class="size-5 rounded-full">
                                 <img :src="`https://github.com/${username}.png`"
                                      :alt="username"
-                                />
+                                >
                             </div>
                         </div>
 
@@ -66,22 +66,22 @@ import type {
     GitHubDateContribution,
 }                                     from '@/Types/GitHubCalendar';
 import { useArrayMap, useDateFormat } from '@vueuse/core';
+import { FoLink }                     from 'flyonui-vue';
 import { sleep }                      from 'sleepjs';
 import { computed, onMounted }        from 'vue';
 import Api                            from '@/Lib/Api';
+import { DAYS, MONTHS }               from '@/Lib/DateConstants.ts';
+import { formatDate }                 from '@/Lib/FormatDate.ts';
 import AxisLabel                      from '@/UI/AxisLabel.vue';
 import DayTile                        from '@/UI/DayTile.vue';
 import GitHubStatistics               from '@/UI/GitHubStatistics.vue';
 import Legend                         from '@/UI/Legend.vue';
-import { formatDate }                 from "@/Lib/FormatDate.ts";
-import { FoLink }                     from "flyonui-vue";
-import { DAYS, MONTHS }               from "@/Lib/DateConstants.ts";
 
 type HeatMapContribution = [string, { count: number; level: GitHubContributionLevel }]; // The string is the date
 
 const props = defineProps<GitHubCalendarProps>();
 
-const contributionsDateRange = computed((): { start: Date, end: Date } => {
+const contributionsDateRange = computed((): { start: Date; end: Date; } => {
     const isFromDate = isDate(props.from);
     const start      = isFromDate ? props.from : new Date(props.from, 0, 1);
     const end        = new Date(start);
@@ -96,7 +96,7 @@ const contributionsDateRange = computed((): { start: Date, end: Date } => {
         end.setDate(end.getDate() - 1);
     }
 
-    return { start, end }
+    return { start, end };
 });
 
 // Fast sleep for better user experience
@@ -108,7 +108,7 @@ const { data } = await Api.getGitHubContributions(
     {
         // todo: implement something nicer
         onError: () => console.warn('error occurred'),
-    }
+    },
 );
 
 const contributions = useArrayMap(
@@ -127,7 +127,7 @@ const contributionsByWeeks = computed((): (GitHubDateContribution | null)[][] =>
     /**
      * The first contribution might not start from the first day so we have to fill the contributions with null values
      */
-    let current: (GitHubDateContribution | null)[] = Array(startDayIndex).fill(null);
+    let current: (GitHubDateContribution | null)[] = Array.from<null>({ length: startDayIndex }).fill(null);
 
     for (let currentDate = new Date(start); currentDate <= end; currentDate.setDate(currentDate.getDate() + 1)) {
         const formattedDate = useDateFormat(currentDate, 'YYYY-MM-DD').value;
@@ -136,7 +136,7 @@ const contributionsByWeeks = computed((): (GitHubDateContribution | null)[][] =>
         current.push({
             date:  new Date(formattedDate),
             count: value?.count ?? 0,
-            level: value?.level ?? 0
+            level: value?.level ?? 0,
         });
 
         if (
@@ -158,7 +158,7 @@ const contributionsByWeeks = computed((): (GitHubDateContribution | null)[][] =>
 });
 
 interface LabellableMonth {
-    label: string;
+    label:        string;
     startingDate: string;
 }
 
@@ -205,7 +205,7 @@ const monthLabels = computed((): (LabellableMonth | null)[] => {
 
 onMounted(() => {
     if (typeof props.from === 'number' && Number.isInteger(props.from) === false) {
-        throw new Error(`When specifying a year, "from" must be an integer. ${props.from} given.`);
+        throw new TypeError(`When specifying a year, "from" must be an integer. ${props.from} given.`);
     }
 });
 
