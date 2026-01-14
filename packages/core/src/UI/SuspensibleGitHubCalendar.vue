@@ -68,7 +68,7 @@ import type {
 import { useArrayMap, useDateFormat } from '@vueuse/core';
 import { FoLink }                     from 'flyonui-vue';
 import { sleep }                      from 'sleepjs';
-import { computed, onMounted }        from 'vue';
+import { computed }                   from 'vue';
 import Api                            from '@/Lib/Api';
 import { DAYS, MONTHS }               from '@/Lib/DateConstants.ts';
 import { formatDate }                 from '@/Lib/FormatDate.ts';
@@ -205,12 +205,6 @@ const monthLabels = computed((): (LabellableMonth | null)[] => {
     }
 
     return data;
-});
-
-onMounted(() => {
-    if (typeof props.from === 'number' && Number.isInteger(props.from) === false) {
-        throw new TypeError(`When specifying a year, "from" must be an integer. ${props.from} given.`);
-    }
 });
 
 function isDate(maybeDate: Date | number): maybeDate is Date {
