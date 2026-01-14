@@ -81,7 +81,7 @@ type HeatMapContribution = [string, { count: number; level: GitHubContributionLe
 
 const props = defineProps<GitHubCalendarProps>();
 
-const contributionsDateRange = computed((): { start: Date; end: Date; } => {
+const contributionsDateRange = computed((): { start: Date; end: Date } => {
     const isFromDate = isDate(props.from);
     const start      = isFromDate ? props.from : new Date(props.from, 0, 1);
     const end        = new Date(start);
@@ -129,7 +129,11 @@ const contributionsByWeeks = computed((): (GitHubDateContribution | null)[][] =>
      */
     let current: (GitHubDateContribution | null)[] = Array.from<null>({ length: startDayIndex }).fill(null);
 
-    for (let currentDate = new Date(start); currentDate <= end; currentDate.setDate(currentDate.getDate() + 1)) {
+    for (
+        let currentDate = new Date(start);
+        currentDate <= end;
+        currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 1)
+    ) {
         const formattedDate = useDateFormat(currentDate, 'YYYY-MM-DD').value;
         const value         = map.get(formattedDate);
 
