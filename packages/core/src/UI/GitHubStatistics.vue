@@ -1,7 +1,9 @@
 <template>
     <!--    todo: maybe the text-base is not needed if it is a bug in flyonui https://github.com/themeselection/flyonui/pull/137 -->
     <div class="grid grid-cols-2 gap-4">
-        <template v-for="statRow in statRows">
+        <template v-for="(statRow, index) in statRows"
+                  :key="index"
+        >
             <FoStats is-bordered
                      orientation="vertical"
             >
@@ -40,8 +42,8 @@ const statRows = computed((): GithubContributionStat[][] => {
     let stat: GithubContributionStat[][] = [];
 
     let totalContributions: number     = 0;
-    let maxCommitsStreak: number = 0;
-    let currentStreak: number    = 0;
+    let maxContributionsStreak: number = 0;
+    let currentStreak: number          = 0;
 
     const totalContributionsByDay: { [day: string]: number }   = Object.fromEntries(DAYS.map(day => [day, 0]));
     const totalContributionsByDate: { [date: string]: number } = {};
@@ -53,7 +55,6 @@ const statRows = computed((): GithubContributionStat[][] => {
 
         const { date, count } = contribution;
 
-        currentStreak += 1;
         totalContributions += count;
 
         const day = getDay(date.getDay());
@@ -64,12 +65,13 @@ const statRows = computed((): GithubContributionStat[][] => {
 
         totalContributionsByDay[day] += count;
 
-        // When count is 0 the new streak must be saved and the current reset
-        if (count === 0) {
-            if (currentStreak > maxCommitsStreak) {
-                maxCommitsStreak = currentStreak;
-            }
+        if (count > 0) {
+            currentStreak += 1;
 
+            if (currentStreak > maxContributionsStreak) {
+                maxContributionsStreak = currentStreak;
+            }
+        } else {
             currentStreak = 0;
         }
 
@@ -84,7 +86,7 @@ const statRows = computed((): GithubContributionStat[][] => {
             },
             {
                 title: 'Max contributions streak',
-                value: maxCommitsStreak,
+                value: maxContributionsStreak,
             },
         ],
         [

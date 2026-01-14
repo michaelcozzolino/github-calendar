@@ -21,7 +21,7 @@ export interface GitHubDateContribution extends GitHubContributionStats {
 export interface GitHubContributionsResponse {
     total: {
         [year: number]: number;
-        [year: string]: number; // 'lastYear;
+        [year: string]: number; // 'lastYear';
     };
     contributions: Array<GitHubContribution>;
 }

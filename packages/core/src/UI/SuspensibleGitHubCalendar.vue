@@ -138,7 +138,7 @@ const contributionsByWeeks = computed((): (GitHubDateContribution | null)[][] =>
         const value         = map.get(formattedDate);
 
         current.push({
-            date:  new Date(formattedDate),
+            date:  new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()),
             count: value?.count ?? 0,
             level: value?.level ?? 0,
         });

@@ -23,13 +23,5 @@ export default defineConfig({
             entry: resolve(__dirname, './src/index.ts'),
             name:  'github-calendar',
         },
-        rollupOptions: {
-            external: ['vue', 'tailwindcss'],
-            output:   {
-                globals: {
-                    vue: 'Vue',
-                },
-            },
-        },
     },
 });
