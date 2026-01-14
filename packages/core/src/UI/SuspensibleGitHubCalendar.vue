@@ -24,8 +24,8 @@
                      :key="i"
                      class="flex flex-col gap-1"
                 >
-                    <DayTile v-for="day in week"
-                             :key="day?.date.toString() ?? i"
+                    <DayTile v-for="(day, j) in week"
+                             :key="day?.date.toString() ?? `${i}-${j}`"
                              :username="username"
                              :day="day"
                     />
