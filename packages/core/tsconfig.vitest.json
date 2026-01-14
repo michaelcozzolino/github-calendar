@@ -7,8 +7,8 @@
         "types": ["node", "jsdom"]
     },
     "include": [
-        "packages/core/src/**/__tests__/*",
-        "../core/src/env.d.ts"
+        "src/**/__tests__/*",
+        "src/env.d.ts"
     ],
     "exclude": []
 }
