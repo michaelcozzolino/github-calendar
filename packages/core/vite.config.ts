@@ -6,6 +6,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
     plugins: [
         vue(),
+        // todo: temporary due to github action error
         tailwindcss({ optimize: { minify: false } }),
     ],
     resolve: {
