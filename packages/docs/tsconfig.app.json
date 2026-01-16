@@ -1,18 +1,10 @@
 {
     "extends": "@vue/tsconfig/tsconfig.dom.json",
     "compilerOptions": {
-        "lib": [
-            "ESNext",
-            "DOM",
-            "DOM.Iterable"
-        ],
-        "rootDir": "src",
+        "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
         "paths": {
-            "@/*": [
-                "./src/*"
-            ]
-        },
-        "noEmit": false
+            "@/*": ["./src/*"]
+        }
     },
     "include": [
         "src/**/*.ts",

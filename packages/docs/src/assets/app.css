@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@plugin "flyonui" {
+    themes: spotify --default, light;
+}
+
+@source '../../../../node_modules/flyonui-vue';
+
+:root {
+    background-color: var(--color-teal-950);
+}
