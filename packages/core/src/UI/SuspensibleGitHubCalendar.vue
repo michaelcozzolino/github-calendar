@@ -174,6 +174,8 @@ const monthLabels = computed((): (LabellableMonth | null)[] => {
         const contribution = contributionsByWeeks.value?.[i]?.[0];
 
         if (contribution === null) {
+            data.push(null);
+
             continue;
         }
 
