@@ -4,7 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 const homeRoute: Readonly<RouteRecordRaw> = {
     name:      Symbol('home'),
     path:      '',
-    component: () => import('@/Components/Home.vue'),
+    component: () => import('@/Components/HomePage.vue'),
 };
 
 const vueRouter = createRouter({
