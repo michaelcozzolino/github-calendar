@@ -28,7 +28,7 @@
         "build": "yarn build:ui && yarn build:types && yarn alias:types && yarn build:styles",
         "build:ui": "vite build -c vite.config.ts",
         "build:styles": "tailwindcss -i src/index.app.css -o src/index.css",
-        "build:types": "vue-tsc --emitDeclarationOnly -p tsconfig.app.json --outDir dist",
+        "build:types": "vue-tsc --declaration --emitDeclarationOnly -p tsconfig.app.json --outDir dist",
         "alias:types": "tsc-alias -p tsconfig.app.json --outDir dist",
         "lint": "eslint . --fix",
         "publish": "yarn npm publish --access public",
