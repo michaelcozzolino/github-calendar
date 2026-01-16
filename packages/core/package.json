@@ -25,8 +25,8 @@
     ],
     "scripts": {
         "dev": "yarn concurrently \"yarn build:ui -w\" \"yarn build:types -w\" \"yarn alias:types -w\" \"yarn build:styles -w\"",
-        "build": "yarn build:ui && yarn build:types && yarn alias:types && yarn build:styles",
-        "build:ui": "vite build -c vite.config.ts",
+        "build": "yarn build:ui && yarn build:types && yarn alias:types",
+        "build:ui": "yarn build:styles && vite build -c vite.config.ts",
         "build:styles": "tailwindcss -i src/index.app.css -o src/index.css",
         "build:types": "vue-tsc --declaration --emitDeclarationOnly -p tsconfig.app.json --outDir dist",
         "alias:types": "tsc-alias -p tsconfig.app.json --outDir dist",
