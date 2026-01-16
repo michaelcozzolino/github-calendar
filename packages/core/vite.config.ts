@@ -6,7 +6,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
     plugins: [
         vue(),
-        tailwindcss(),
+        tailwindcss({ optimize: { minify: false } }),
     ],
     resolve: {
         alias: {
