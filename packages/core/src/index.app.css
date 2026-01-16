@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@plugin "flyonui" {
+    themes: spotify --default;
+}
+
+:root, :host {
+    background-color: transparent;
+}
+
+@source "../../../node_modules/flyonui/components/stat";
+@source "../../../node_modules/flyonui/components/loading";
+
+

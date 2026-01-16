@@ -1,0 +1,60 @@
+{
+    "name": "github-calendar",
+    "type": "module",
+    "version": "0.0.0",
+    "author": "Michael Cozzolino",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/michaelcozzolino/github-calendar.git"
+    },
+    "browserslist": [
+        "defaults and fully supports es6-module",
+        "maintained node versions"
+    ],
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/github-calendar.js",
+            "require": "./dist/github-calendar.umd.cjs",
+            "default": "./dist/github-calendar.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "dev": "yarn concurrently \"yarn build:ui -w\" \"yarn build:types -w\" \"yarn alias:types -w\" \"yarn build:styles -w\"",
+        "build": "yarn build:ui && yarn build:types && yarn alias:types && yarn build:styles",
+        "build:ui": "vite build -c vite.config.ts",
+        "build:styles": "tailwindcss -i src/index.app.css -o src/index.css",
+        "build:types": "vue-tsc --emitDeclarationOnly -p tsconfig.app.json --outDir dist",
+        "alias:types": "tsc-alias -p tsconfig.app.json --outDir dist",
+        "lint": "eslint . --fix",
+        "publish": "yarn npm publish --access public",
+        "test": "vitest run",
+        "test-coverage": "vitest run --coverage",
+        "type-check": "vue-tsc --noEmit -p tsconfig.app.json && vue-tsc --noEmit -p tsconfig.vitest.json"
+    },
+    "devDependencies": {
+        "@tailwindcss/cli": "^4.1.18",
+        "@tailwindcss/vite": "^4.1.16",
+        "@types/node": "^22.19.3",
+        "@vitejs/plugin-vue": "^5.2.4",
+        "@vue/test-utils": "^2.4.6",
+        "@vue/tsconfig": "^0.8.1",
+        "@vueuse/core": "^14.1.0",
+        "concurrently": "^9.2.1",
+        "flyonui": "^2.4.1",
+        "flyonui-vue": "^2.1.1",
+        "jsdom": "^26.1.0",
+        "sass-embedded": "^1.93.2",
+        "sleepjs": "^4.0.3",
+        "tailwindcss": "^4.1.16",
+        "tsc-alias": "^1.8.16",
+        "typescript": "^5.9.3",
+        "vite": "^7.3.0",
+        "vue": "^3.5.22",
+        "vue-tsc": "^3.1.1"
+    }
+}
