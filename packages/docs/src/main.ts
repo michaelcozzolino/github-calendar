@@ -1,4 +1,4 @@
-import { defineGitHubCalendar } from 'github-calendar';
+import { defineGitHubCalendar } from '@michaelcozzolino/github-calendar';
 
 import { createApp } from 'vue';
 import App           from '@/App.vue';

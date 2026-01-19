@@ -8,7 +8,7 @@
         "node": ">=20.19.0"
     },
     "scripts": {
-        "dev": "yarn concurrently \"yarn workspace github-calendar dev\" \"yarn workspace github-calendar-docs dev\"",
+        "dev": "yarn concurrently \"yarn workspace @michaelcozzolino/github-calendar dev\" \"yarn workspace github-calendar-docs dev\"",
         "build": "yarn workspaces foreach -Apt run build",
         "lint": "yarn workspaces foreach -Apt run lint",
         "test": "vitest run",
