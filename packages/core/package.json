@@ -31,7 +31,7 @@
         "build:types": "vue-tsc --declaration --emitDeclarationOnly -p tsconfig.app.json --outDir dist",
         "alias:types": "tsc-alias -p tsconfig.app.json --outDir dist",
         "lint": "eslint . --fix",
-        "publish": "yarn npm publish --access public",
+        "publish": "npm publish --access public",
         "test": "vitest run",
         "test-coverage": "vitest run --coverage",
         "type-check": "vue-tsc --noEmit -p tsconfig.app.json && vue-tsc --noEmit -p tsconfig.vitest.json"
