@@ -29,8 +29,8 @@
 import type { GithubContributionStat, GitHubDateContribution } from '@/Types/GitHubCalendar';
 import { FoStat, FoStats, FoStatTitle, FoStatValue }           from 'flyonui-vue';
 import { computed }                                            from 'vue';
-import { DAYS }                                                from '@/Lib/DateConstants.ts';
-import { formatDate }                                          from '@/Lib/FormatDate.ts';
+import { DAYS }                                                from '@/Lib/DateConstants';
+import { formatDate }                                          from '@/Lib/FormatDate';
 
 interface Props {
     contributions: (GitHubDateContribution | null)[][];
