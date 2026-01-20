@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import type { GitHubCalendarProps } from '@/Types/GitHubCalendar.ts';
+import type { GitHubCalendarProps } from '@/Types/GitHubCalendar';
 import { FoLoading }                from 'flyonui-vue';
 import { ref, watch }               from 'vue';
 import SuspensibleGitHubCalendar    from '@/UI/SuspensibleGitHubCalendar.vue';

@@ -14,7 +14,7 @@
                 <AxisLabel v-for="(month, i) in monthLabels"
                            :key="month?.label ?? i"
                            :label="month?.label"
-                           :to="month === null ? undefined : `https://github.com/${username}?tab=overview&from=${month.startingDate}`"
+                           :to="month === null ? undefined : useContributionsOverviewUrl(month.startingDate).value"
                            underline-effect="no-underline"
                 />
             </div>
@@ -33,14 +33,14 @@
             </div>
 
             <div class="flex place-content-between my-4">
-                <FoLink :to="`https://github.com/${username}`"
+                <FoLink :to="profileUrl"
                         class="pb-1"
                         underline-effect="hover-animated"
                 >
                     <div class="flex gap-2">
                         <div class="avatar">
                             <div class="size-5 rounded-full">
-                                <img :src="`https://github.com/${username}.png`"
+                                <img :src="profilePicUrl"
                                      :alt="username"
                                 >
                             </div>
@@ -70,8 +70,9 @@ import { FoLink }                     from 'flyonui-vue';
 import { sleep }                      from 'sleepjs';
 import { computed }                   from 'vue';
 import Api                            from '@/Lib/Api';
-import { DAYS, MONTHS }               from '@/Lib/DateConstants.ts';
-import { formatDate }                 from '@/Lib/FormatDate.ts';
+import { DAYS, MONTHS }               from '@/Lib/DateConstants';
+import { formatDate }                 from '@/Lib/FormatDate';
+import { useGitHub }                  from '@/Lib/UseGitHub';
 import AxisLabel                      from '@/UI/AxisLabel.vue';
 import DayTile                        from '@/UI/DayTile.vue';
 import GitHubStatistics               from '@/UI/GitHubStatistics.vue';
@@ -80,6 +81,8 @@ import Legend                         from '@/UI/Legend.vue';
 type HeatMapContribution = [string, { count: number; level: GitHubContributionLevel }]; // The string is the date
 
 const props = defineProps<GitHubCalendarProps>();
+
+const { useContributionsOverviewUrl, profileUrl, profilePicUrl } = useGitHub(() => props.username);
 
 const contributionsDateRange = computed((): { start: Date; end: Date } => {
     const isFromDate = isDate(props.from);
