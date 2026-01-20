@@ -16,7 +16,7 @@ export function useGitHub(username: MaybeRefOrGetter<string>): {
         to?: MaybeRefOrGetter<string>,
     ): ComputedRef<string> {
         return computed(() => {
-            const url = `${baseUrl}{toValue(username)}?tab=overview&from=${toValue(from)}`;
+            const url = `${baseUrl}${toValue(username)}?tab=overview&from=${toValue(from)}`;
 
             if (to === undefined) {
                 return url;
