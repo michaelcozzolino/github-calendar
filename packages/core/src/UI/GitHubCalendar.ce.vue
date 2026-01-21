@@ -27,5 +27,5 @@ watch(() => props.from, () => {
     }
 }, { immediate: true });
 
-watch(() => props.from, () => count.value++);
+watch([() => props.from, () => props.username], () => count.value++);
 </script>

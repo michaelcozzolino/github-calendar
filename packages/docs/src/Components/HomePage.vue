@@ -6,14 +6,12 @@
 
                 <UserRetrievalForm v-model:user="currentUser"
                                    :last-retrieved-user="lastRetrievedUser"
-                                   @update:last-retrieved-user="count++; lastRetrievedUser = $event;"
+                                   @update:last-retrieved-user="lastRetrievedUser = $event"
                 />
 
                 <!--                    todo: resize for mobile -->
                 <div class="px-4">
-                    <!--                    todo: internally it doesnt get refreshed if the username changes -->
-                    <github-calendar :key="count"
-                                     .username="lastRetrievedUser"
+                    <github-calendar .username="lastRetrievedUser"
                                      .from="2025"
                     />
                 </div>
@@ -37,6 +35,4 @@ import UserRetrievalForm from '@/Components/UserRetrievalForm.vue';
 const initialUsername: string = 'michaelcozzolino';
 const currentUser             = ref<string>(initialUsername);
 const lastRetrievedUser       = ref<string>(initialUsername);
-
-const count = ref<number>(0);
 </script>
