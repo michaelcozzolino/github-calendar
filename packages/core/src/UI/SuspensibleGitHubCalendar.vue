@@ -33,6 +33,7 @@
             </div>
 
             <div class="flex place-content-between my-4">
+                <!--                todo: web component must be used the underline effect does not work -->
                 <FoLink :to="profileUrl"
                         class="pb-1"
                         underline-effect="hover-animated"
@@ -67,7 +68,6 @@ import type {
 }                                     from '@/Types/GitHubCalendar';
 import { useArrayMap, useDateFormat } from '@vueuse/core';
 import { FoLink }                     from 'flyonui-vue';
-import { sleep }                      from 'sleepjs';
 import { computed }                   from 'vue';
 import Api                            from '@/Lib/Api';
 import { DAYS, MONTHS }               from '@/Lib/DateConstants';
@@ -101,9 +101,6 @@ const contributionsDateRange = computed((): { start: Date; end: Date } => {
 
     return { start, end };
 });
-
-// Fast sleep for better user experience
-await sleep(1500);
 
 const { data } = await Api.getGitHubContributions(
     () => props.username,
